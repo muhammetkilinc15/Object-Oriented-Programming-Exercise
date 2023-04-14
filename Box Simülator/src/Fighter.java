@@ -32,7 +32,7 @@ public class Fighter {
     }
     public boolean isDodge() {
         Random random = new Random();
-        double randomNumber = Math.random() * 100;
+        double randomNumber = random.nextDouble(1,101);
         return this.dodge >= randomNumber;
     }
 

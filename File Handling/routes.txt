@@ -1,0 +1,8 @@
+Adana#Mersin#50#1#150
+Mersin#Ankara#250#5#325
+Ankara#İzmir#600#0#540
+İzmir#Aydın#600#5#
+Aydın#İstanbul#420#6#430
+İstanbul#Edirne#500##
+Edirne
+#Tekirdağ#200aa#2#500

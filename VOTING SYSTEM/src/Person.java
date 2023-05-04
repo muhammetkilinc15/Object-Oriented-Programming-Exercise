@@ -17,7 +17,7 @@ public class Person {
         getCitizenIDNumber();
         if (checkIDValid(getID()) && this.getAge() >= 18 && !isVotingState()) {
             for (Party party : parties) {
-                if (party.getID() == partyID) {
+                if (party.getPartID() == partyID) {
                     party.increaseTotalNumOfVotes();
                     changeVotingState();
                     return true;

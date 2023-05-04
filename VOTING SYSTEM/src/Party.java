@@ -8,6 +8,7 @@ public class Party {
         this.partyID=partyID;
         totalNumOfVotes=0;
     }
+
     // this function increases the party's vote
     public void increaseTotalNumOfVotes(){
         this.totalNumOfVotes++;
@@ -16,7 +17,7 @@ public class Party {
     {
         this.name=name;
     }
-    public int getID()
+    public int getPartID()
     {
         return this.partyID;
     }

@@ -18,7 +18,7 @@ public class VotingSystem {
 
         System.out.println("3. citizen:");
         allperson[2] = new Foreign("Bob", 23);
-        allperson[2].Vote(2, parties);
+        allperson[2].Vote(1, parties);
 
         System.out.println("4. citizen:");
         allperson[3] = new Foreign("Alice", 23);

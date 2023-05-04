@@ -53,6 +53,10 @@ public class Person {
         return age;
     }
 
+    public void setVotingState(boolean votingState) {
+        this.votingState = votingState;
+    }
+
     protected boolean isVotingState() {
         return votingState;
     }

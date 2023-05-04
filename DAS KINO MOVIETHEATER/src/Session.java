@@ -1,8 +1,8 @@
 public class Session {
-    Movie movie;
-    Hall hall;
-    String day;
-    String time;
+    public Movie movie;
+    public Hall hall;
+    public String day;
+    public String time;
 
     public Session() {
     }

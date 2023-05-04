@@ -2,12 +2,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Reservation {
-    private Session session;
-    private Client client;
-    private int cost;
-    private int ticketPrice;
-    private int numOfTickets;
-    private int[] seatsBooked;
+    Session session;
+    Client client;
+    int cost;
+    int ticketPrice;
+    int numOfTickets;
+    int[] seatsBooked;
 
     public Reservation() {
 
@@ -25,10 +25,10 @@ public class Reservation {
     public Reservation bookASeatRandom(Reservation reservation, int numOfBookedTickets) {
         Random random = new Random();
         for (int i = 0; i < numOfBookedTickets; i++) {
-            int randomSeatNumber = random.nextInt(0, reservation.session.hall.getCapacity());
-            if (reservation.session.hall.getSeats()[randomSeatNumber] != 'B') {
+            int randomSeatNumber = random.nextInt(0, reservation.session.hall.capacity);
+            if (reservation.session.hall.seats[randomSeatNumber] != 'B') {
                 reservation.seatsBooked[i] = randomSeatNumber;
-                reservation.session.hall.getSeats()[randomSeatNumber] = 'B';
+                reservation.session.hall.seats[randomSeatNumber] = 'B';
             } else {
                 i--;
             }
@@ -38,28 +38,30 @@ public class Reservation {
 
     public Reservation bookASeatBySeatNumber(Reservation reservation, int numOfBookedTickets, int[] wantedSeats) {
         for (int i = 0; i < numOfBookedTickets; i++) {
-            reservation.session.hall.getSeats()[wantedSeats[i]] = 'B';
+            reservation.session.hall.seats[wantedSeats[i]] = 'B';
         }
         return reservation;
     }
 
     public void createReservation(Reservation reservation) {
+
         System.out.println("Hello " + reservation.client.name + " your member ship status is " + reservation.client.checkMemberShip(client.member_id));
         System.out.println("Enter number of tickets that you wanna book\n" + reservation.numOfTickets);
+
         if (reservation.client.checkMemberShip(client.member_id)) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter the seat number of tickets tht you wanna book between 0 to " + reservation.session.hall.getCapacity());
+            System.out.println("Enter the seat number of tickets tht you wanna book between 0 to " + reservation.session.hall.capacity);
             int[] wantedSeats = new int[reservation.numOfTickets];
+
             for (int i = 0; i < reservation.numOfTickets; i++) {
                 int seatNumber = scanner.nextInt();
-                if (seatNumber < 0 || seatNumber > reservation.session.hall.getCapacity() || reservation.session.hall.getSeats()[seatNumber] == 'B') {
+                if (seatNumber < 0 || seatNumber > reservation.session.hall.capacity || reservation.session.hall.seats[seatNumber] == 'B') {
                     i--;
                     continue;
                 }
-                for (int j = 0; j < wantedSeats.length; j++) {
-                    if (wantedSeats[j] == seatNumber) {
+                for (int wantedSeat : wantedSeats) {
+                    if (wantedSeat == seatNumber) {
                         i--;
-                        continue;
                     }
                 }
                 wantedSeats[i] = seatNumber;
@@ -70,11 +72,13 @@ public class Reservation {
         } else {
             reservation = bookASeatRandom(reservation, reservation.numOfTickets);
         }
-        reservation.cost = calculateCost(reservation);
+
         System.out.printf("Your reservation to %s on  %s at %s for %d people successfully made.Your seat number are: \n", reservation.session.movie.name, reservation.session.day, reservation.session.time, reservation.numOfTickets);
         for (int i = 0; i < reservation.seatsBooked.length; i++) {
             System.out.print(reservation.seatsBooked[i] + " ");
         }
+
+        reservation.cost = calculateCost(reservation);
         System.out.println(" Your ticket cost is: " + reservation.cost);
 
     }

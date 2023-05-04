@@ -1,8 +1,8 @@
 public class Movie {
-    String name;
-    String director;
-    int year;
-    Integer duration; // filmin süresi
+    public String name;
+    public String director;
+    public int year;
+    public Integer duration;
 
     public  Movie(){
 

@@ -1,7 +1,7 @@
 public class Client {
-    String name;
-    int member_id;
-    int age;
+    public String name;
+    public int member_id;
+    public int age;
 
     public Client() {
         this.name = "";

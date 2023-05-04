@@ -19,7 +19,7 @@ public class Person {
             for (Party party : parties) {
                 if (party.getPartID() == partyID) {
                     party.increaseTotalNumOfVotes();
-                    changeVotingState();
+                    changeVotingState(true);
                     return true;
                 }
             }
@@ -27,11 +27,13 @@ public class Person {
         return false;
     }
 
+    // This method gets the ID number from the citizen
     protected void getCitizenIDNumber() {
         System.out.print("Enter your ID: ");
         this.ID = scanner.nextLine();
     }
 
+    // This method ID number checks if it is valid
     protected  boolean checkIDValid(String ID) {
         if (ID.length() == 11) {
             for (int i = 0; i < ID.length(); i++) {
@@ -52,17 +54,12 @@ public class Person {
     protected int getAge() {
         return age;
     }
-
-    public void setVotingState(boolean votingState) {
-        this.votingState = votingState;
-    }
-
     protected boolean isVotingState() {
         return votingState;
     }
 
-    protected void changeVotingState() {
-        this.votingState = true;
+    protected void changeVotingState(boolean votingState) {
+        this.votingState = votingState;
     }
     protected String getID() {
         return ID;

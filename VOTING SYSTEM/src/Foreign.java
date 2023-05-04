@@ -31,7 +31,7 @@ public class Foreign extends Person {
             for (Party party : parties) {
                 if (party.getPartID() == partyID) {
                     party.setTotalNumOfVotes(party.getTotalNumOfVotes() - 1);
-                    setVotingState(false);
+                    changeVotingState(false);
                     break;
                 }
             }

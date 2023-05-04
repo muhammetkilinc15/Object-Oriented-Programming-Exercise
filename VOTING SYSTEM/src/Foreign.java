@@ -7,8 +7,9 @@ public class Foreign extends Person {
 
     @Override
     public boolean Vote(int partyID, Party[] parties) {
-
-        return super.Vote(partyID, parties) && isPassportValid(partyID, parties);
+        boolean result1 = super.Vote(partyID, parties);
+        boolean result2 = isPassportValid(partyID, parties);
+        return result1 && result2;
     }
 
     private void getPassport() {

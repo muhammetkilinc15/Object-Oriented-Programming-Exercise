@@ -13,7 +13,7 @@ public class VotingSystem {
         allperson[0].Vote(1, parties);
 
         System.out.println("2. citizen:");
-        allperson[1] = new Turkish("İlker", 15);
+        allperson[1] = new Foreign("İlker", 15);
         allperson[1].Vote(0, parties);
 
         System.out.println("3. citizen:");

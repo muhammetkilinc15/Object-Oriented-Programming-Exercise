@@ -6,7 +6,6 @@ public class Turkish extends Person {
 
     @Override
     protected boolean Vote(int partyID, Party[] parties) {
-
         return super.Vote(partyID, parties);
     }
 

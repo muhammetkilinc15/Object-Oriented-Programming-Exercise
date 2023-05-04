@@ -4,14 +4,10 @@ public class Foreign extends Person {
     public Foreign(String name, int age) {
         super(name, age);
     }
-
     @Override
     public boolean Vote(int partyID, Party[] parties) {
-        boolean result1 = super.Vote(partyID, parties);
-        boolean result2 = isPassportValid(partyID, parties);
-        return result1 && result2;
+        return super.Vote(partyID, parties) && isPassportValid(partyID, parties);
     }
-
     private void getPassport() {
         System.out.print("Enter your Passport Number: ");
         this.passportNumber = scanner.nextLine();
@@ -38,13 +34,10 @@ public class Foreign extends Person {
                     setVotingState(false);
                     break;
                 }
-
             }
-
         }
         return result;
     }
-
     @Override
     public String toString() {
         return super.toString() + " Foreign";

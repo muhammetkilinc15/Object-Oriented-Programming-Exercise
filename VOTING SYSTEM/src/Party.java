@@ -1,7 +1,7 @@
 public class Party {
     private String name;
     private int partyID;
-    int totalNumOfVotes;
+    private int totalNumOfVotes;
     public Party(String name,int partyID)
     {
         this.name=name;

@@ -1,4 +1,4 @@
 UML :
 
 
-![Voting s drawio](https://user-images.githubusercontent.com/108901980/236297320-3eeb652f-e8aa-4772-8a6e-0b29996c31a6.png)
+![Voting s drawio (1)](https://user-images.githubusercontent.com/108901980/236297611-488334b1-35f1-46a2-9aeb-0a8214cdfe5a.png)

@@ -30,8 +30,15 @@ public class Foreign extends Person {
             }
         }
         if (!result) {
-            parties[partyID].setTotalNumOfVotes(parties[partyID].getTotalNumOfVotes() - 1);
-            setVotingState(false);
+            for (int i=0;i<parties.length;i++){
+                if (parties[i].getPartID()==partyID){
+                    parties[i].setTotalNumOfVotes(parties[i].getTotalNumOfVotes() - 1);
+                    setVotingState(false);
+                    break;
+                }
+
+            }
+
         }
         return result;
     }

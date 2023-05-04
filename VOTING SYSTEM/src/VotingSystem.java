@@ -2,9 +2,9 @@ public class VotingSystem {
     public static void main(String[] args) {
 
         Party[] parties = new Party[3];
-        parties[0] = new Party("A", 0);
-        parties[1] = new Party("B", 1);
-        parties[2] = new Party("C", 2);
+        parties[0] = new Party("A", 1);
+        parties[1] = new Party("B", 2);
+        parties[2] = new Party("C", 3);
 
         Person[] allperson = new Person[5];
 

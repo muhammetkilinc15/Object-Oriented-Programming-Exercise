@@ -24,6 +24,7 @@ public class Foreign extends Person {
             for (int i = 1; i < passportNumber.length(); i++) {
                 if (!Character.isLetter(passportNumber.charAt(0)) || !Character.isDigit(passportNumber.charAt(i))) {
                     result = false;
+                    break;
                 }
             }
         }

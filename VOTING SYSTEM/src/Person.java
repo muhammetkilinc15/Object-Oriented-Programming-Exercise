@@ -32,7 +32,7 @@ public class Person {
         this.ID = scanner.nextLine();
     }
 
-    protected static boolean checkIDValid(String ID) {
+    protected  boolean checkIDValid(String ID) {
         if (ID.length() == 11) {
             for (int i = 0; i < ID.length(); i++) {
                 if (Character.isLetter(ID.charAt(i))) {

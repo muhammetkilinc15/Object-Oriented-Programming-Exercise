@@ -10,7 +10,7 @@ public class BookStore {
     public static void main(String[] args) {
         BookStoreClerk clerk = new BookStoreClerk();
         File inputFile = new File("src/books.txt");
-        File outputFile = new File("log.txt");
+        File outputFile = new File("src/log.txt");
 
         try {
             Scanner scanner = new Scanner(inputFile);

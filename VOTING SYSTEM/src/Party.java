@@ -29,7 +29,7 @@ public class Party {
         this.name = name;
     }
 
-    public int getPartID() {
+    public int getID() {
         return this.partyID;
     }
 

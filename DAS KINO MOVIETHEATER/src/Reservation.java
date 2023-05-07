@@ -25,8 +25,8 @@ public class Reservation {
     public Reservation bookASeatRandom(Reservation reservation, int numOfBookedTickets) {
         Random random = new Random();
         for (int i = 0; i < numOfBookedTickets; i++) {
-            int randomSeatNumber = random.nextInt(0, reservation.session.hall.capacity);
-            if (reservation.session.hall.seats[randomSeatNumber] != 'B') {
+            int randomSeatNumber = random.nextInt(reservation.session.hall.capacity);
+            if (reservation.session.hall.seats[randomSeatNumber] == 'U') {
                 reservation.seatsBooked[i] = randomSeatNumber;
                 reservation.session.hall.seats[randomSeatNumber] = 'B';
             } else {
@@ -39,6 +39,7 @@ public class Reservation {
     public Reservation bookASeatBySeatNumber(Reservation reservation, int numOfBookedTickets, int[] wantedSeats) {
         for (int i = 0; i < numOfBookedTickets; i++) {
             reservation.session.hall.seats[wantedSeats[i]] = 'B';
+            seatsBooked[i] = wantedSeats[i];
         }
         return reservation;
     }
@@ -49,23 +50,42 @@ public class Reservation {
         System.out.println("Enter number of tickets that you wanna book\n" + reservation.numOfTickets);
 
         if (reservation.client.checkMemberShip(client.member_id)) {
+            int[] wantedSeats = new int[reservation.numOfTickets];
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter the seat number of tickets tht you wanna book between 0 to " + reservation.session.hall.capacity);
-            int[] wantedSeats = new int[reservation.numOfTickets];
 
+            // With this loop, seat numbers are retrieved from the user.
             for (int i = 0; i < reservation.numOfTickets; i++) {
                 int seatNumber = scanner.nextInt();
-                if (seatNumber < 0 || seatNumber > reservation.session.hall.capacity || reservation.session.hall.seats[seatNumber] == 'B') {
+
+                // If an invalid seat number is entered, a warning is issued.
+                if (seatNumber < 0 || seatNumber >= reservation.session.hall.capacity) {
+                    System.out.println("You entered an invalid seat number !");
                     i--;
                     continue;
                 }
+
+                // If the entered seat number has already been reserved, a warning is given.
+                if (reservation.session.hall.seats[seatNumber] == 'B') {
+                    System.out.println("This seat has already been reserved !");
+                    i--;
+                    continue;
+                }
+
+                // Here the user is prevented from re-entering the seat number entered
+                boolean isFlag = true;
                 for (int wantedSeat : wantedSeats) {
-                    if (wantedSeat == seatNumber) {
+                    if (wantedSeat == seatNumber && i != 0) {
+                        isFlag = false;
                         i--;
+                        break;
                     }
                 }
-                wantedSeats[i] = seatNumber;
-                seatsBooked[i] = seatNumber;
+                if (isFlag) {
+                    wantedSeats[i] = seatNumber;
+                }else {
+                    System.out.println("you have already entered this seat number");
+                }
             }
             reservation = bookASeatBySeatNumber(reservation, numOfTickets, wantedSeats);
 
@@ -92,7 +112,6 @@ public class Reservation {
             } else {
                 reservation.cost += reservation.ticketPrice;
             }
-
         }
         return reservation.cost;
     }

@@ -13,11 +13,11 @@ public class Person {
         this.votingState = false;
     }
 
-    protected boolean Vote(int partyID, Party[] parties) {
+    public boolean Vote(int partyID, Party[] parties) {
         getCitizenIDNumber();
         if (checkIDValid(getID()) && this.getAge() >= 18 && !isVotingState()) {
             for (Party party : parties) {
-                if (party.getPartID() == partyID) {
+                if (party.getID() == partyID) {
                     party.increaseTotalNumOfVotes();
                     changeVotingState(true);
                     return true;
@@ -28,13 +28,13 @@ public class Person {
     }
 
     // This method gets the ID number from the citizen
-    protected void getCitizenIDNumber() {
+    private void getCitizenIDNumber() {
         System.out.print("Enter your ID: ");
         this.ID = scanner.nextLine();
     }
 
     // This method ID number checks if it is valid
-    protected  boolean checkIDValid(String ID) {
+    private static boolean checkIDValid(String ID) {
         if (ID.length() == 11) {
             for (int i = 0; i < ID.length(); i++) {
                 if (Character.isLetter(ID.charAt(i))) {
@@ -51,17 +51,17 @@ public class Person {
         return "Name: " + this.name + ", Age: " + this.age + ", Voting state: " + this.votingState + "\nCitizenship status: ";
     }
 
-    protected int getAge() {
-        return age;
+    private int getAge() {
+        return this.age;
     }
-    protected boolean isVotingState() {
-        return votingState;
+    private boolean isVotingState() {
+        return this.votingState;
     }
 
     protected void changeVotingState(boolean votingState) {
         this.votingState = votingState;
     }
     protected String getID() {
-        return ID;
+        return this.ID;
     }
 }

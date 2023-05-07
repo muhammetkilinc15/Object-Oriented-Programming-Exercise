@@ -7,6 +7,11 @@ import java.util.Scanner;
 
 public class BookStore {
 
+    /**
+     *
+     * Author: Muhammet Kılınç
+     */
+
     public static void main(String[] args) {
         BookStoreClerk clerk = new BookStoreClerk();
         File inputFile = new File("src/books.txt");

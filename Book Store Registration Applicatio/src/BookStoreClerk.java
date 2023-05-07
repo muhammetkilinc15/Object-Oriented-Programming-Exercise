@@ -56,6 +56,5 @@ public class BookStoreClerk {
         } catch (IllegalArgumentException e) {
             throw new InvalidBookException(e.getMessage() + "\ncaused by " + e.getClass().getCanonicalName());
         }
-        // return null;
     }
 }

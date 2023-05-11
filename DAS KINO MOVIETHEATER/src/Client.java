@@ -6,15 +6,15 @@ public class Client {
     public Client() {
         this.name = "";
     }
+
     public Client(String name, int member_id, int age) {
         this.name = name;
         this.member_id = member_id;
         this.age = age;
     }
+
     public boolean checkMemberShip(int member_id) {
-        if (member_id / 1000000 == 111) {
-            return true;
-        }
-        return false;
+        String memberID = String.valueOf(member_id);
+        return memberID.charAt(0) == '1' && memberID.charAt(1) == '1' && memberID.charAt(2) == '1';
     }
 }

@@ -14,13 +14,15 @@ public class Person {
     }
 
     public boolean Vote(int partyID, Party[] parties) {
-        getCitizenIDNumber();
-        if (checkIDValid(getID()) && this.getAge() >= 18 && !isVotingState()) {
-            for (Party party : parties) {
-                if (party.getID() == partyID) {
-                    party.increaseTotalNumOfVotes();
-                    changeVotingState(true);
-                    return true;
+        if (!isVotingState()){
+            getCitizenIDNumber();
+            if (checkIDValid(getID()) && this.getAge() >= 18 ) {
+                for (Party party : parties) {
+                    if (party.getID() == partyID) {
+                        party.increaseTotalNumOfVotes();
+                        changeVotingState(true);
+                        return true;
+                    }
                 }
             }
         }

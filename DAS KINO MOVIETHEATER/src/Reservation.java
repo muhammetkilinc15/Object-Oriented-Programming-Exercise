@@ -1,13 +1,14 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Reservation {
-    Session session;
-    Client client;
-    int cost;
-    int ticketPrice;
-    int numOfTickets;
-    int[] seatsBooked;
+    public Session session;
+    public Client client;
+    public int cost;
+    public int ticketPrice;
+    public int numOfTickets;
+    public int[] seatsBooked;
 
     public Reservation() {
 
@@ -19,7 +20,6 @@ public class Reservation {
         this.numOfTickets = numOfTickets;
         this.seatsBooked = new int[numOfTickets];
         this.ticketPrice = 100;
-        createReservation(this);
     }
 
     public Reservation bookASeatRandom(Reservation reservation, int numOfBookedTickets) {
@@ -46,11 +46,15 @@ public class Reservation {
 
     public void createReservation(Reservation reservation) {
 
-        System.out.println("Hello " + reservation.client.name + " your member ship status is " + reservation.client.checkMemberShip(client.member_id));
+        System.out.println("Hello " + reservation.client.name + " your member ship status is " + reservation.client.checkMemberShip(reservation.client.member_id));
         System.out.println("Enter number of tickets that you wanna book\n" + reservation.numOfTickets);
 
-        if (reservation.client.checkMemberShip(client.member_id)) {
+        if (reservation.client.checkMemberShip(reservation.client.member_id)) {
             int[] wantedSeats = new int[reservation.numOfTickets];
+
+            // I filled all the values of the array with -1 to avoid getting an error on seat 0
+            Arrays.fill(wantedSeats, -1);
+
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter the seat number of tickets tht you wanna book between 0 to " + reservation.session.hall.capacity);
 
@@ -75,7 +79,7 @@ public class Reservation {
                 // Here the user is prevented from re-entering the seat number entered
                 boolean isFlag = true;
                 for (int wantedSeat : wantedSeats) {
-                    if (wantedSeat == seatNumber && i != 0) {
+                    if (wantedSeat == seatNumber) {
                         isFlag = false;
                         i--;
                         break;
@@ -83,7 +87,7 @@ public class Reservation {
                 }
                 if (isFlag) {
                     wantedSeats[i] = seatNumber;
-                }else {
+                } else {
                     System.out.println("you have already entered this seat number");
                 }
             }

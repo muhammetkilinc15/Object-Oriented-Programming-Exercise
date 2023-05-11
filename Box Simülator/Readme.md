@@ -1,4 +1,4 @@
-[Box Simulator.drawio_2.pdf](https://github.com/muhammetkilinc15/Object-Oriented-Programming-Exercise/files/11236359/Box.Simulator.drawio_2.pdf)
+![Screenshot (161)](https://github.com/muhammetkilinc15/Object-Oriented-Programming-Exercise/assets/108901980/dab1da95-6a53-49bf-8410-f379623fe941)
 
 
 

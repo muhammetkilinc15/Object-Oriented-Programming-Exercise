@@ -15,6 +15,8 @@ public class Foreign extends Person {
         this.passportNumber = scanner.nextLine();
     }
 
+    // This method takes party ID and parties. If the ID number was entered correctly, the party was voted.
+    // Here, if the passport number is checked and entered incorrectly, I cancel the vote.
     private boolean isPassportValid(int partyID, Party[] parties) {
         getPassport();
         boolean result = this.passportNumber.length() == 7;
@@ -25,8 +27,7 @@ public class Foreign extends Person {
                     break;
                 }
             }
-        }
-        if (!result){
+        } else {
             for (Party party : parties) {
                 if (party.getID() == partyID) {
                     party.setTotalNumOfVotes(party.getTotalNumOfVotes() - 1);
@@ -35,10 +36,8 @@ public class Foreign extends Person {
                 }
             }
         }
-
         return result;
     }
-
 
     @Override
     public String toString() {

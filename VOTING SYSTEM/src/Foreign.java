@@ -27,7 +27,9 @@ public class Foreign extends Person {
                     break;
                 }
             }
-        } else {
+        } 
+        
+        if(!result){
             for (Party party : parties) {
                 if (party.getID() == partyID) {
                     party.setTotalNumOfVotes(party.getTotalNumOfVotes() - 1);
@@ -36,6 +38,7 @@ public class Foreign extends Person {
                 }
             }
         }
+    }
         return result;
     }
 
